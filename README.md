@@ -141,3 +141,86 @@ together with CBG-level income-distribution files.
 The `geo_data/` directory contains geographic boundary files used in the spatial analyses and map visualizations.
 
 Some source mobility data may be subject to third-party access or redistribution restrictions. If an input dataset required by a script is not included in this repository, please obtain it according to the **Data Availability** statement of the accompanying manuscript and place the processed files in the directory expected by the corresponding script.
+
+
+### Running the analysis
+
+A typical workflow is:
+
+#### 1. Prepare the analysis data
+
+Run the relevant preprocessing scripts when the corresponding intermediate data have not already been generated.
+
+For example:
+
+```bash
+python regular_month_flow_nmf.py
+python pre_figure1a.py
+```
+
+Not every preprocessing script is required for every analysis. Each `pre_*.py` script prepares data used by the corresponding figure or analysis component.
+
+#### 2. Run the mobility-reallocation models
+
+The main optimization scripts are:
+
+#### Sequential reallocation
+
+```bash
+python dynamic_integer.py
+```
+
+This script implements the sequential mobility-reallocation framework in which social-exposure conditions are updated as the allocation changes.
+
+##### Static benchmark
+
+```bash
+python static_integer.py
+```
+
+This script implements the corresponding static benchmark, in which the exposure information used by the optimization is evaluated without sequential updating.
+
+##### Urban-core and cross-city analysis
+
+```bash
+python dynamic_integer_allcore_weight.py
+```
+
+This script implements the sequential analysis for the urban-core datasets and is used for the corresponding cross-city/category analyses.
+
+The principal model settings, including the city, POI category, optimization parameters, and input directories, are specified near the beginning of these scripts and can be modified when reproducing a particular analysis.
+
+#### Reproducing the figures
+
+After the required preprocessing and optimization outputs have been generated, the manuscript figures can be reproduced using the corresponding scripts.
+
+##### Figure 
+
+```bash
+python figure1a.py
+```
+
+The figure number in each filename corresponds to the associated panel in the manuscript.
+
+### Changing the city or POI category
+
+Several scripts contain parameters such as:
+
+```python
+city = "boston"
+category = "Other Individual and Family Services"
+```
+
+To reproduce results for a different city or POI category, modify these parameters and make sure that the corresponding processed input directory exists.
+
+For urban-core analyses, the expected directory structure is generally:
+
+```text
+matrices_A_D_S_Distribution_<city>_core/
+```
+
+with category-specific subdirectories containing the required flow, distance, and social-exposure matrices.
+
+### Notes on reproducibility
+
+The scripts in this repository correspond to the computational analyses used for the accompanying manuscript. Numerical differences may arise across operating systems, Python/package versions, or optimization-solver versions. When reproducing the reported results, we recommend keeping the model parameters and data-processing settings provided in the released scripts unchanged.
