@@ -154,32 +154,68 @@ Some source mobility data may be subject to third-party access or redistribution
 
 ### Running the analysis
 
-A typical workflow is:
+The primary purpose of this repository is to reproduce the figures reported in the manuscript. The public figure-generation scripts and the released processed data are therefore the main components required for reproduction.
 
-#### 1. Use the released figure inputs or regenerate them
+#### 1. Reproduce the manuscript figures
 
-For many revised figure scripts, the required aggregated/anonymized plotting inputs are already provided in `pre_data/`. After copying these files into the repository root as described above, the corresponding figure scripts can be run directly.
+The processed and anonymized inputs required by the public figure scripts are provided in `pre_data/`.
 
-If you want to regenerate a released plotting input from the underlying matrices or model outputs, run the corresponding preprocessing script first. For example:
-
-```bash
-python pre_figure1a.py
-python pre_figure2a.py
-python pre_figure3a.py
-python pre_figure4a.py
-```
-
-Not every preprocessing script is required for every analysis. Each `pre_figure*.py` script prepares data used by the corresponding figure or analysis component.
-
-The reference-flow preprocessing can be generated separately when required:
+After copying the required files from `pre_data/` into the repository root as described above, the corresponding figure scripts can be run directly. For example:
 
 ```bash
-python regular_month_flow_nmf.py
+python figure1a.py
+python figure2a.py
+python figure3a.py
+python figure4a.py
 ```
 
-#### 2. Run the mobility-reallocation models
+The figure number in each filename corresponds to the associated panel in the manuscript.
 
-The main optimization scripts are:
+#### 2. Preprocessing scripts
+
+The `pre_figure*.py` scripts in `processing/` are provided to document the preprocessing, aggregation, and calculation procedures used to generate the released figure-specific data.
+
+These scripts depend on source-level mobility data or other restricted inputs that cannot be redistributed publicly. Therefore, the `pre_figure*.py` scripts are **not expected to run directly using only the files contained in this repository**.
+
+Their purpose is to make the data-processing logic transparent and to show how the released aggregated or anonymized files in `pre_data/` were produced.
+
+For example:
+
+```text
+pre_figure1a.py
+pre_figure2a.py
+pre_figure3a.py
+pre_figure4a.py
+```
+
+The corresponding public `figure*.py` scripts do not require access to these restricted source data and instead use the released processed inputs.
+
+The script
+
+```text
+regular_month_flow_nmf.py
+```
+
+is similarly provided to document the procedure used to construct the behaviorally informed reference-flow matrix from the underlying mobility data. Its source-level inputs may also be subject to data-access or redistribution restrictions.
+
+#### 3. Model implementation
+
+The repository additionally provides the main optimization programs used to implement the mobility-reallocation framework. These scripts are included to demonstrate the computational implementation of the proposed models and to facilitate understanding or extension of the optimization framework.
+
+The optimization programs themselves are executable, but the original mobility data used in the manuscript cannot be redistributed because of data-access and privacy restrictions. Researchers who have access to their own mobility data can use these programs by preparing the input matrices in the same format as those used in this study. In particular, `flow_matrix.csv` should be organized as a CBG-by-POI matrix, where each row corresponds to a CBG identifier, each column corresponds to a POI identifier, and each cell records the number of visits from that CBG to that POI. A simplified synthetic example is shown below.
+
+| CBG     | POI_A | POI_B | POI_C | POI_D | POI_E |
+| ------- | ----: | ----: | ----: | ----: | ----: |
+| CBG_001 |     0 |     2 |     0 |     1 |     0 |
+| CBG_002 |     3 |     0 |     0 |     0 |     1 |
+| CBG_003 |     0 |     0 |     4 |     0 |     0 |
+| CBG_004 |     1 |     0 |     0 |     2 |     0 |
+| CBG_005 |     0 |     1 |     0 |     0 |     3 |
+| CBG_006 |     2 |     0 |     1 |     0 |     0 |
+| CBG_007 |     0 |     0 |     0 |     3 |     1 |
+| CBG_008 |     1 |     2 |     0 |     0 |     0 |
+
+The corresponding distance, social-exposure, and other required matrices should use the same CBG row identifiers and POI column identifiers so that the matrices can be aligned directly by the model scripts.
 
 ##### Sequential reallocation
 
@@ -187,7 +223,7 @@ The main optimization scripts are:
 python dynamic_integer.py
 ```
 
-This script implements the sequential mobility-reallocation framework in which social-exposure conditions are updated as the allocation changes.
+This script implements the sequential mobility-reallocation model, in which social-exposure conditions are updated as the allocation changes.
 
 ##### Static benchmark
 
@@ -203,10 +239,9 @@ This script implements the corresponding static benchmark, in which the exposure
 python dynamic_integer_allcore_weight.py
 ```
 
-This script implements the sequential analysis for the urban-core datasets and is used for the corresponding cross-city/category analyses.
+This script implements the sequential model for the urban-core datasets and supports the corresponding cross-city and POI-category analyses.
 
-The principal model settings, including the city, POI category, optimization parameters, and input directories, are specified near the beginning of these scripts and can be modified when reproducing a particular analysis.
-
+These optimization scripts are provided primarily to illustrate the implementation of the proposed models. 
 #### 3. Reproduce the figures
 
 After the required public plotting inputs or regenerated preprocessing outputs are available in the working directory, the manuscript figures can be reproduced using the corresponding scripts.
