@@ -1,0 +1,345 @@
+GEOID,poi_id,new_flow,link_tradeoff,is_fig1d_opportunity
+250092011001,222-222@62j-t2b-5zz,3.0,"Higher exposure, no farther",True
+250092021011,222-222@62j-t2b-5zz,1.0,"Higher exposure, no farther",True
+250092021011,zzw-223@62j-r5v-kcq,2.0,"Higher exposure, no farther",True
+250092021012,222-222@62j-t2b-5zz,4.0,"Higher exposure, no farther",True
+250092022004,222-222@62j-t2b-5zz,3.0,"Higher exposure, no farther",True
+250092041022,zzw-223@62j-r5v-kcq,3.0,"Higher exposure, no farther",True
+250092042003,zzw-223@62j-r5v-kcq,3.0,"Higher exposure, no farther",True
+250092044001,zzw-223@62j-r5v-kcq,3.0,"Higher exposure, no farther",True
+250092046002,zzw-223@62j-r5v-kcq,3.0,"Higher exposure, no farther",True
+250092047011,222-222@62j-t2b-5zz,3.0,"Higher exposure, no farther",True
+250092047013,zzw-223@62j-r5v-kcq,3.0,"Higher exposure, no farther",True
+250092051001,zzw-223@62j-r5v-kcq,3.0,"Higher exposure, no farther",True
+250092051002,222-222@62j-t2b-5zz,3.0,"Higher exposure, no farther",True
+250092051003,222-222@62j-t2b-5zz,3.0,"Higher exposure, no farther",True
+250092051004,222-222@62j-t2b-5zz,8.0,"Higher exposure, no farther",True
+250092052002,222-222@62j-t2b-5zz,3.0,"Higher exposure, no farther",True
+250092052005,222-222@62j-t2b-5zz,10.0,"Higher exposure, no farther",True
+250092053001,222-222@62j-t2b-5zz,16.0,"Higher exposure, no farther",True
+250092054003,222-222@62j-t2b-5zz,3.0,"Higher exposure, no farther",True
+250092056001,222-222@62j-sxz-9xq,3.0,"Higher exposure, no farther",True
+250092057005,222-222@62j-t2b-5zz,3.0,"Higher exposure, no farther",True
+250092058002,222-222@62j-t2b-5zz,3.0,"Higher exposure, no farther",True
+250092058003,222-222@62j-t2b-5zz,3.0,"Higher exposure, no farther",True
+250092062001,222-222@62j-t2b-5zz,3.0,"Higher exposure, no farther",True
+250092065002,zzw-223@62j-r5v-kcq,3.0,"Higher exposure, no farther",True
+250092071002,222-222@62j-t2b-5zz,3.0,"Higher exposure, no farther",True
+250092081013,222-222@62j-t2b-5zz,3.0,"Higher exposure, no farther",True
+250092081014,222-222@62j-t2b-5zz,3.0,"Higher exposure, no farther",True
+250092081021,222-222@62j-t2b-5zz,6.0,"Higher exposure, no farther",True
+250092082002,222-222@62j-t2b-5zz,3.0,"Higher exposure, no farther",True
+250092091003,222-222@62j-t2b-5zz,1.0,"Higher exposure, farther",False
+250092092002,222-222@62j-szw-wp9,3.0,"Lower exposure, no farther",False
+250092101001,222-222@62j-szw-wp9,3.0,"Higher exposure, no farther",True
+250092106001,222-222@62j-t2b-5zz,1.0,"Higher exposure, no farther",True
+250092107002,zzw-222@62j-ptr-389,3.0,"Higher exposure, no farther",True
+250092108003,zzw-222@62j-ptr-389,2.0,"Higher exposure, no farther",True
+250092109001,zzw-222@62j-pst-2c5,6.0,"Higher exposure, no farther",True
+250092111001,zzw-222@62j-pst-2c5,3.0,"Higher exposure, no farther",True
+250092113001,zzw-222@62j-pst-2c5,3.0,"Lower exposure, no farther",False
+250092131001,225-222@62j-rz2-yd9,3.0,"Lower exposure, farther",False
+250092131003,222-222@62j-rk3-rtv,1.0,"Lower exposure, farther",False
+250092131003,225-222@62j-rz2-yd9,6.0,"Lower exposure, farther",False
+250092131003,zzw-222@62j-pst-2c5,1.0,"Lower exposure, farther",False
+250092141001,zzw-222@62j-pst-2c5,3.0,"Lower exposure, farther",False
+250092141003,zzw-222@62j-pst-2c5,3.0,"Higher exposure, farther",False
+250092151011,zzw-222@62j-pst-2c5,1.0,"Higher exposure, farther",False
+250092172011,zzw-222@62j-pst-2c5,6.0,"Lower exposure, no farther",False
+250092172012,zzw-222@62j-pst-2c5,3.0,"Higher exposure, no farther",True
+250092172021,zzw-222@62j-pst-2c5,7.0,"Higher exposure, no farther",True
+250092172023,zzw-222@62j-pst-2c5,3.0,"Higher exposure, no farther",True
+250092173002,zzw-222@62j-pst-2c5,3.0,"Higher exposure, no farther",True
+250092181001,225-222@62j-pjj-nbk,3.0,"Higher exposure, farther",False
+250092181004,225-222@62j-pjj-nbk,3.0,"Higher exposure, farther",False
+250092211001,225-222@62j-pjj-nbk,3.0,"Higher exposure, farther",False
+250092217002,225-222@62j-pjj-nbk,3.0,"Higher exposure, no farther",True
+250092219012,225-222@62j-pjj-nbk,3.0,"Higher exposure, no farther",True
+250092219022,225-222@62j-pjj-nbk,3.0,"Higher exposure, no farther",True
+250092221001,225-222@62j-pjj-nbk,3.0,"Higher exposure, farther",False
+250092221002,225-222@62j-pjj-nbk,2.0,"Higher exposure, farther",False
+250092221002,zzw-222@62j-pst-2c5,1.0,"Higher exposure, farther",False
+250092221003,225-222@62j-pjj-nbk,3.0,"Higher exposure, farther",False
+250092233002,zzw-222@62j-pst-2c5,3.0,"Lower exposure, farther",False
+250092501001,222-222@62j-rgz-n5z,6.0,"Higher exposure, no farther",True
+250092502001,222-222@62j-rgz-n5z,3.0,"Higher exposure, no farther",True
+250092505003,222-222@62j-rgz-n5z,2.0,"Higher exposure, no farther",True
+250092505003,222-222@62j-rk3-rtv,1.0,"Higher exposure, no farther",True
+250092506003,222-222@62j-rgz-n5z,2.0,"Higher exposure, no farther",True
+250092506003,222-222@62j-rk3-rtv,1.0,"Higher exposure, no farther",True
+250092514002,222-222@62j-rgz-n5z,3.0,"Higher exposure, no farther",True
+250092516001,222-222@62j-rk3-rtv,1.0,"Higher exposure, no farther",True
+250092516002,222-222@62j-rk3-rtv,1.0,"Higher exposure, no farther",True
+250092517001,222-222@62j-rk3-rtv,1.0,"Higher exposure, no farther",True
+250092517001,222-222@62j-sx7-xwk,2.0,"Lower exposure, no farther",False
+250092518003,222-222@62j-rgz-n5z,6.0,"Higher exposure, no farther",True
+250092518004,222-222@62j-rgz-n5z,4.0,"Higher exposure, no farther",True
+250092521021,222-222@62j-rgz-n5z,2.0,"Lower exposure, no farther",False
+250092521021,222-222@62j-rk3-rtv,1.0,"Higher exposure, farther",False
+250092521023,222-222@62j-rgz-n5z,3.0,"Higher exposure, no farther",True
+250092525011,222-222@62j-rgz-n5z,2.0,"Higher exposure, no farther",True
+250092525011,222-222@62j-rk3-rtv,1.0,"Higher exposure, no farther",True
+250092525012,222-222@62j-rgz-n5z,3.0,"Higher exposure, no farther",True
+250092526011,225-222@62j-rz2-yd9,3.0,"Higher exposure, no farther",True
+250092526023,225-222@62j-rz2-yd9,3.0,"Higher exposure, farther",False
+250092532012,222-222@62j-rgz-n5z,3.0,"Higher exposure, farther",False
+250092532032,222-222@62j-rgz-n5z,1.0,"Lower exposure, farther",False
+250092532032,222-222@62j-rk3-rtv,1.0,"Lower exposure, no farther",False
+250092532032,225-222@62j-rz2-yd9,1.0,"Lower exposure, farther",False
+250092532051,222-222@62j-rk3-rtv,15.0,"Lower exposure, farther",False
+250092532051,225-222@62j-rz2-yd9,1.0,"Lower exposure, farther",False
+250092532052,222-222@62j-rk3-rtv,3.0,"Lower exposure, farther",False
+250092532052,225-222@62j-rz2-yd9,2.0,"Higher exposure, farther",False
+250092541004,222-222@62j-rgz-n5z,7.0,"Lower exposure, no farther",False
+250092541005,222-222@62j-rgz-n5z,1.0,"Lower exposure, no farther",False
+250092541005,222-222@62j-rk3-rtv,4.0,"Lower exposure, no farther",False
+250092543011,222-222@62j-rgz-n5z,1.0,"Lower exposure, farther",False
+250092543011,222-222@62j-rk3-rtv,8.0,"Lower exposure, farther",False
+250092543012,222-222@62j-t54-8gk,5.0,"Higher exposure, farther",False
+250092543022,222-222@62j-rk3-rtv,1.0,"Lower exposure, farther",False
+250092543022,222-222@62j-t54-8gk,2.0,"Higher exposure, farther",False
+250092544022,222-222@62j-t54-8gk,16.0,"Higher exposure, farther",False
+250092544023,222-222@62j-t54-8gk,3.0,"Higher exposure, farther",False
+250092544024,222-222@62j-rgz-n5z,13.0,"Lower exposure, no farther",False
+250092544031,222-222@62j-rgz-n5z,1.0,"Lower exposure, farther",False
+250092544031,222-222@62j-rk3-rtv,1.0,"Higher exposure, farther",False
+250092544031,222-222@62j-t54-8gk,4.0,"Higher exposure, farther",False
+250092544032,222-222@62j-rk3-rtv,1.0,"Lower exposure, farther",False
+250092544032,222-222@62j-t54-8gk,2.0,"Higher exposure, farther",False
+250092606002,225-222@62j-rz2-yd9,3.0,"Higher exposure, no farther",True
+250092610002,225-222@62j-rz2-yd9,3.0,"Higher exposure, no farther",True
+250092610003,225-222@62j-rz2-yd9,3.0,"Higher exposure, no farther",True
+250092621001,225-222@62j-rz2-yd9,3.0,"Higher exposure, farther",False
+250092621003,225-222@62j-rz2-yd9,3.0,"Higher exposure, farther",False
+250092651012,225-222@62j-rz2-yd9,3.0,"Higher exposure, farther",False
+250092651021,225-222@62j-rz2-yd9,3.0,"Higher exposure, farther",False
+250092661001,225-222@62j-rz2-yd9,3.0,"Higher exposure, farther",False
+250173106021,222-222@62j-t54-8gk,3.0,"Higher exposure, no farther",True
+250173143015,222-222@62j-t54-8gk,3.0,"Higher exposure, no farther",True
+250173154011,222-222@62j-t54-8gk,3.0,"Higher exposure, farther",False
+250173155005,222-222@62j-t54-8gk,3.0,"Higher exposure, farther",False
+250173162022,222-222@62j-t54-8gk,3.0,"Higher exposure, farther",False
+250173163005,222-222@62j-t54-8gk,5.0,"Higher exposure, farther",False
+250173164004,222-222@62j-t54-8gk,3.0,"Higher exposure, farther",False
+250173165004,222-222@62j-t54-8gk,6.0,"Higher exposure, no farther",True
+250173173021,222-222@62j-t54-8gk,4.0,"Higher exposure, farther",False
+250173181004,222-222@62j-t54-8gk,3.0,"Higher exposure, farther",False
+250173223002,222-222@62j-srj-tgk,2.0,"Higher exposure, farther",False
+250173223002,223-222@62k-rcm-nwk,1.0,"Higher exposure, farther",False
+250173281002,zzw-222@62k-fk7-ygk,6.0,"Lower exposure, no farther",False
+250173311022,222-222@62j-stv-xh5,3.0,"Lower exposure, no farther",False
+250173311024,222-222@62j-t54-8gk,6.0,"Higher exposure, farther",False
+250173323001,222-222@62j-t54-8gk,5.0,"Higher exposure, farther",False
+250173323003,zzy-222@62j-sf9-qzz,3.0,"Lower exposure, no farther",False
+250173334002,zzy-222@62j-sf9-qzz,3.0,"Lower exposure, no farther",False
+250173335021,zzy-222@62j-sf9-qzz,6.0,"Higher exposure, no farther",True
+250173341001,222-222@62j-sxz-9xq,4.0,"Lower exposure, farther",False
+250173341003,222-222@62j-sxz-9xq,9.0,"Lower exposure, farther",False
+250173343001,222-222@62j-szw-wp9,2.0,"Lower exposure, farther",False
+250173343002,222-222@62j-sxz-9xq,2.0,"Lower exposure, farther",False
+250173343002,222-222@62j-t2b-5zz,1.0,"Higher exposure, farther",False
+250173344001,222-222@62j-sxz-9xq,2.0,"Lower exposure, farther",False
+250173344001,222-222@62j-t2b-5zz,1.0,"Higher exposure, farther",False
+250173344004,222-222@62j-sxz-9xq,4.0,"Lower exposure, farther",False
+250173351002,222-222@62j-sxz-9xq,3.0,"Lower exposure, no farther",False
+250173352001,222-222@62j-sxz-9xq,2.0,"Lower exposure, no farther",False
+250173352001,222-222@62j-t2b-5zz,1.0,"Higher exposure, farther",False
+250173352002,222-222@62j-sxz-9xq,3.0,"Lower exposure, no farther",False
+250173353011,222-222@62j-sxz-9xq,3.0,"Lower exposure, no farther",False
+250173353021,222-222@62j-szw-wp9,3.0,"Higher exposure, no farther",True
+250173353022,222-222@62j-sxz-9xq,3.0,"Lower exposure, no farther",False
+250173363003,222-222@62j-t2b-5zz,3.0,"Higher exposure, farther",False
+250173363006,222-222@62j-t2b-5zz,1.0,"Higher exposure, farther",False
+250173372012,222-222@62j-sxz-9xq,2.0,"Lower exposure, no farther",False
+250173372012,222-222@62j-t2b-5zz,1.0,"Higher exposure, farther",False
+250173372021,zzw-222@62j-sz6-3wk,3.0,"Higher exposure, farther",False
+250173373001,222-222@62j-sxz-9xq,3.0,"Higher exposure, no farther",True
+250173373002,zzw-222@62j-sz6-3wk,3.0,"Higher exposure, farther",False
+250173373003,zzw-222@62j-sz6-3wk,3.0,"Higher exposure, no farther",True
+250173381001,zzw-222@62j-sz6-3wk,3.0,"Lower exposure, no farther",False
+250173381002,zzw-222@62j-sz6-3wk,3.0,"Higher exposure, no farther",True
+250173383001,222-222@62j-t2b-5zz,1.0,"Higher exposure, farther",False
+250173383001,zzw-222@62j-sz6-3wk,2.0,"Higher exposure, farther",False
+250173383002,zzw-222@62j-sz6-3wk,3.0,"Higher exposure, farther",False
+250173384001,223-224@62j-sj4-68v,1.0,"Higher exposure, farther",False
+250173384001,226-222@62j-sj7-qj9,7.0,"Higher exposure, farther",False
+250173384002,226-222@62j-sj7-qj9,3.0,"Higher exposure, farther",False
+250173384002,zzw-222@62j-sz6-3wk,3.0,"Lower exposure, farther",False
+250173385001,222-222@62j-t2b-5zz,1.0,"Higher exposure, farther",False
+250173385001,zzw-222@62j-sz6-3wk,2.0,"Lower exposure, no farther",False
+250173385003,222-222@62j-t2b-5zz,1.0,"Higher exposure, farther",False
+250173385003,226-222@62j-sj7-qj9,2.0,"Higher exposure, farther",False
+250173392006,222-222@62j-t2b-5zz,1.0,"Higher exposure, farther",False
+250173392006,zzw-222@62j-sz6-3wk,2.0,"Higher exposure, no farther",True
+250173400002,zzw-222@62j-sz6-3wk,3.0,"Higher exposure, no farther",True
+250173547001,226-222@62j-sj7-qj9,3.0,"Higher exposure, farther",False
+250173563003,226-222@62j-sj7-qj9,2.0,"Higher exposure, farther",False
+250173563003,22j-222@62j-sk3-jn5,1.0,"Lower exposure, no farther",False
+250173564006,226-222@62j-sj7-qj9,3.0,"Higher exposure, farther",False
+250173564007,22j-222@62j-sk3-jn5,2.0,"Higher exposure, farther",False
+250173564007,zzw-222@62j-sz6-3wk,1.0,"Higher exposure, farther",False
+250173564008,22j-222@62j-sk3-jn5,1.0,"Higher exposure, farther",False
+250173564008,zzw-222@62j-sz6-3wk,2.0,"Higher exposure, farther",False
+250173567011,22j-222@62j-sk3-jn5,3.0,"Higher exposure, no farther",True
+250173573002,223-224@62j-sj2-snq,1.0,"Lower exposure, no farther",False
+250173581003,226-222@62j-sj7-qj9,4.0,"Higher exposure, farther",False
+250173584004,226-222@62j-sj7-qj9,3.0,"Higher exposure, farther",False
+250173586004,zzy-222@62j-sf9-qzz,3.0,"Lower exposure, no farther",False
+250173661004,222-222@62j-srj-tgk,2.0,"Lower exposure, no farther",False
+250173661004,223-224@62j-sj4-68v,1.0,"Higher exposure, farther",False
+250173683004,224-223@62j-sh4-45f,5.0,"Lower exposure, farther",False
+250173731001,222-222@62j-shb-t9z,2.0,"Lower exposure, no farther",False
+250173731001,223-224@62j-sj2-snq,1.0,"Lower exposure, no farther",False
+250173731003,224-223@62j-sh4-45f,1.0,"Higher exposure, no farther",True
+250173731004,222-222@62j-shb-t9z,1.0,"Lower exposure, no farther",False
+250173731004,226-222@62j-sj7-qj9,3.0,"Higher exposure, farther",False
+250173731005,222-222@62j-shb-t9z,1.0,"Lower exposure, no farther",False
+250173731005,222-223@62j-sjh-6kz,1.0,"Higher exposure, farther",False
+250173731005,223-224@62j-sj2-snq,1.0,"Lower exposure, farther",False
+250173732003,222-222@62j-shb-t9z,4.0,"Lower exposure, no farther",False
+250173733001,222-222@62j-shb-t9z,4.0,"Lower exposure, no farther",False
+250173734001,222-222@62j-shb-t9z,3.0,"Lower exposure, no farther",False
+250173735002,223-224@62j-sj4-68v,1.0,"Higher exposure, farther",False
+250173735002,zzw-222@62j-sgx-mc5,2.0,"Higher exposure, farther",False
+250173737004,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, farther",False
+250173738001,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, farther",False
+250173740001,227-222@62j-sgt-v9f,2.0,"Higher exposure, farther",False
+250173740001,227-222@62j-shr-wp9,4.0,"Lower exposure, no farther",False
+250173742003,224-222@62k-pjg-575,1.0,"Lower exposure, no farther",False
+250173742003,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, farther",False
+250173745003,222-222@62j-shb-t9z,1.0,"Lower exposure, no farther",False
+250173745003,223-224@62j-sj4-68v,2.0,"Higher exposure, farther",False
+250173746001,222-223@62j-sjh-6kz,1.0,"Higher exposure, farther",False
+250173746001,223-224@62j-sj4-68v,2.0,"Higher exposure, farther",False
+250173748002,227-222@62j-shr-wp9,3.0,"Lower exposure, farther",False
+250173822002,222-222@62j-srj-tgk,2.0,"Lower exposure, no farther",False
+250173822002,223-222@62k-rcm-nwk,1.0,"Lower exposure, farther",False
+250173832001,223-222@62k-rcm-nwk,1.0,"Higher exposure, no farther",True
+250173833002,223-222@62k-rcm-nwk,1.0,"Higher exposure, no farther",True
+250173835013,222-222@62j-srj-tgk,1.0,"Lower exposure, no farther",False
+250173835013,223-222@62k-rcm-nwk,2.0,"Lower exposure, no farther",False
+250173871003,223-222@62k-rcm-nwk,2.0,"Lower exposure, farther",False
+250173871004,222-222@62k-r96-syv,3.0,"Higher exposure, no farther",True
+250214021022,227-222@62j-sgt-v9f,3.0,"Higher exposure, no farther",True
+250214034003,223-224@62j-sj4-68v,1.0,"Higher exposure, farther",False
+250214034003,227-222@62j-sgt-v9f,2.0,"Lower exposure, farther",False
+250214051001,222-223@62j-sjh-6kz,1.0,"Higher exposure, farther",False
+250214051001,223-224@62j-sj4-68v,1.0,"Higher exposure, farther",False
+250214051001,227-222@62j-sgt-v9f,1.0,"Lower exposure, farther",False
+250214061023,227-222@62j-sgt-v9f,3.0,"Lower exposure, farther",False
+250214081023,222-224@62k-nyw-4gk,3.0,"Higher exposure, farther",False
+250214112004,227-222@62j-sgt-v9f,3.0,"Higher exposure, farther",False
+250214121003,223-224@62j-sj4-68v,1.0,"Higher exposure, farther",False
+250214121003,227-222@62j-sgt-v9f,2.0,"Lower exposure, farther",False
+250214123001,227-222@62j-sgt-v9f,2.0,"Higher exposure, no farther",True
+250214123001,228-222@62k-pc7-d5f,1.0,"Higher exposure, farther",False
+250214141004,227-222@62j-sgt-v9f,4.0,"Higher exposure, farther",False
+250214142002,228-222@62k-pc7-d5f,4.0,"Higher exposure, farther",False
+250214143003,228-222@62k-pc7-d5f,3.0,"Higher exposure, farther",False
+250214143003,zzw-222@62k-pc7-ckf,1.0,"Higher exposure, farther",False
+250214161013,228-222@62k-pc7-d5f,1.0,"Higher exposure, farther",False
+250214161013,zzw-222@62j-sgx-mc5,2.0,"Higher exposure, no farther",True
+250214176022,zzw-222@62j-sgx-mc5,4.0,"Higher exposure, no farther",True
+250214176023,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, no farther",True
+250214178021,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, farther",False
+250214181022,zzw-222@62j-sgx-mc5,4.0,"Higher exposure, no farther",True
+250214191001,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, farther",False
+250214195001,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, farther",False
+250214195002,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, farther",False
+250214197002,zzw-222@62j-sgx-mc5,5.0,"Higher exposure, farther",False
+250214197002,zzw-222@62k-pc7-ckf,1.0,"Higher exposure, farther",False
+250214203023,23v-222@62k-pc7-8qf,1.0,"Higher exposure, farther",False
+250214203023,zzw-222@62k-pc7-ckf,3.0,"Higher exposure, farther",False
+250214221001,zzw-222@62k-pc7-ckf,5.0,"Higher exposure, farther",False
+250214226001,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, farther",False
+250214228001,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, farther",False
+250214421032,222-224@62k-nyw-4gk,2.0,"Lower exposure, no farther",False
+250214421032,228-222@62k-pc7-d5f,1.0,"Higher exposure, farther",False
+250214561022,228-222@62k-pc7-d5f,2.0,"Higher exposure, farther",False
+250214561022,zzw-222@62k-pc7-ckf,4.0,"Higher exposure, farther",False
+250235001011,226-222@62j-sj7-qj9,3.0,"Higher exposure, farther",False
+250235001013,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, farther",False
+250235011013,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, farther",False
+250235011023,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, farther",False
+250235011024,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, farther",False
+250235012011,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, farther",False
+250235012012,zzw-222@62j-sgx-mc5,5.0,"Higher exposure, farther",False
+250235021011,zzw-222@62k-pc7-ckf,3.0,"Higher exposure, farther",False
+250235021021,zzw-222@62k-pc7-ckf,5.0,"Higher exposure, farther",False
+250235022002,228-222@62k-pc7-d5f,1.0,"Higher exposure, farther",False
+250235022002,zzw-222@62j-qst-87q,2.0,"Higher exposure, no farther",True
+250235031013,228-222@62k-pc7-d5f,4.0,"Higher exposure, farther",False
+250235031013,zzw-222@62k-pc7-ckf,1.0,"Higher exposure, farther",False
+250235031022,zzw-222@62k-pc7-ckf,3.0,"Higher exposure, farther",False
+250235031023,23v-222@62k-pc7-8qf,1.0,"Lower exposure, farther",False
+250235031023,zzw-222@62k-pc7-ckf,2.0,"Higher exposure, farther",False
+250235071032,222-222@62k-2jw-bp9,5.0,"Higher exposure, farther",False
+250235082001,zzw-222@62k-pc7-ckf,3.0,"Higher exposure, farther",False
+250235091012,23v-222@62k-pc7-8qf,1.0,"Higher exposure, farther",False
+250235091012,zzw-222@62k-pc7-ckf,2.0,"Higher exposure, farther",False
+250235101001,228-222@62k-pc7-d5f,1.0,"Higher exposure, no farther",True
+250235101001,zzw-222@62k-pc7-ckf,1.0,"Higher exposure, no farther",True
+250235102004,228-222@62k-pc7-d5f,6.0,"Higher exposure, no farther",True
+250235106003,228-222@62k-pc7-d5f,3.0,"Higher exposure, no farther",True
+250235108003,23v-222@62k-pc7-8qf,1.0,"Higher exposure, no farther",True
+250235111001,228-222@62k-pc7-d5f,3.0,"Higher exposure, no farther",True
+250235114001,23v-222@62k-pc7-8qf,1.0,"Higher exposure, no farther",True
+250235117011,zzw-222@62k-pc7-ckf,3.0,"Higher exposure, no farther",True
+250235201001,zzw-222@62k-pc7-ckf,3.0,"Higher exposure, farther",False
+250235202023,zzw-222@62k-pc7-ckf,4.0,"Higher exposure, farther",False
+250235221012,228-222@62k-pc7-d5f,1.0,"Higher exposure, farther",False
+250235221012,23v-222@62k-pc7-8qf,1.0,"Higher exposure, farther",False
+250235221012,zzw-222@62k-pc7-ckf,1.0,"Higher exposure, farther",False
+250235221022,zzw-222@62k-pc7-ckf,3.0,"Higher exposure, farther",False
+250235251012,zzw-222@62k-pc7-ckf,4.0,"Higher exposure, farther",False
+250235252041,228-222@62k-pc7-d5f,3.0,"Higher exposure, farther",False
+250235252042,zzw-222@62k-pc7-ckf,3.0,"Higher exposure, farther",False
+250235261005,zzw-222@62k-pc7-ckf,3.0,"Higher exposure, farther",False
+250235305005,zzw-222@62k-2kw-dy9,3.0,"Higher exposure, farther",False
+250235309021,222-222@62k-2b5-wp9,2.0,"Lower exposure, no farther",False
+250235441001,222-222@62k-2jw-bp9,3.0,"Higher exposure, farther",False
+250235441003,222-222@62k-2jw-bp9,3.0,"Higher exposure, farther",False
+250250003022,222-222@62j-shb-t9z,3.0,"Lower exposure, no farther",False
+250250004011,222-223@62j-sjh-6kz,1.0,"Higher exposure, no farther",True
+250250004011,223-224@62j-sj2-snq,1.0,"Higher exposure, no farther",True
+250250004011,223-224@62j-sj4-68v,1.0,"Higher exposure, no farther",True
+250250004023,223-224@62j-sj2-snq,1.0,"Lower exposure, no farther",False
+250250004023,223-224@62j-sj4-68v,2.0,"Higher exposure, no farther",True
+250250104032,222-222@62j-shb-t9z,2.0,"Higher exposure, farther",False
+250250104032,223-224@62j-sj2-snq,1.0,"Higher exposure, no farther",True
+250250801001,222-223@62j-sjh-6kz,1.0,"Higher exposure, no farther",True
+250250801001,223-224@62j-sj2-snq,1.0,"Higher exposure, no farther",True
+250250801001,223-224@62j-sj4-68v,1.0,"Higher exposure, no farther",True
+250250801001,226-222@62j-sj7-qj9,1.0,"Higher exposure, no farther",True
+250250814001,222-222@62j-shb-t9z,1.0,"Higher exposure, farther",False
+250250814001,223-224@62j-sj4-68v,2.0,"Higher exposure, no farther",True
+250250821003,222-223@62j-sjh-6kz,2.0,"Higher exposure, no farther",True
+250250821003,zzw-222@62j-sgx-mc5,1.0,"Higher exposure, no farther",True
+250250924001,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, no farther",True
+250251002002,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, no farther",True
+250251010011,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, no farther",True
+250251010013,224-222@62k-pjg-575,1.0,"Higher exposure, farther",False
+250251010013,227-222@62j-sgt-v9f,2.0,"Higher exposure, no farther",True
+250251010016,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, no farther",True
+250251011024,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, no farther",True
+250251103011,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, no farther",True
+250251106072,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, no farther",True
+250251202012,zzw-222@62j-sgx-mc5,3.0,"Higher exposure, no farther",True
+250251401021,227-222@62j-sgt-v9f,3.0,"Higher exposure, no farther",True
+250251401051,227-222@62j-sgt-v9f,3.0,"Higher exposure, no farther",True
+250251402022,227-222@62j-sgt-v9f,3.0,"Higher exposure, no farther",True
+250251403006,227-222@62j-sgt-v9f,3.0,"Higher exposure, no farther",True
+250251404001,227-222@62j-shr-wp9,3.0,"Higher exposure, no farther",True
+250251707022,226-222@62j-sj7-qj9,3.0,"Higher exposure, no farther",True
+250251707023,226-222@62j-sj7-qj9,3.0,"Higher exposure, no farther",True
+250251708004,226-222@62j-sj7-qj9,3.0,"Higher exposure, no farther",True
+330150540002,zzw-222@62j-wq5-ygk,3.0,"Lower exposure, farther",False
+330150550011,zzw-222@62j-rg6-kj9,3.0,"Higher exposure, farther",False
+330150560001,zzw-222@62j-x3r-gzf,3.0,"Higher exposure, farther",False
+330150650052,224-222@62j-wgx-ndv,3.0,"Higher exposure, farther",False
+330151001001,225-222@62j-rz2-yd9,3.0,"Higher exposure, farther",False
+330151001003,225-222@62j-rz2-yd9,3.0,"Higher exposure, farther",False
+330151002003,225-222@62j-rz2-yd9,3.0,"Higher exposure, farther",False
+330151031002,225-222@62j-rz2-yd9,3.0,"Higher exposure, farther",False
+330151051004,zzw-222@62j-wq5-ygk,3.0,"Higher exposure, farther",False
+330151061021,222-222@62j-t54-8gk,3.0,"Higher exposure, farther",False

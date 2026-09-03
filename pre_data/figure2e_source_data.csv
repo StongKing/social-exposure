@@ -1,0 +1,91 @@
+city,poi_code,poi_category,social_relative_change,distance_relative_change
+newyork,624190,Other Individual and Family Services,0.8467243077261938,-0.02422756251187841
+losangeles,624190,Other Individual and Family Services,0.380960629933444,-0.20452477207148773
+chicago,624190,Other Individual and Family Services,0.3993350252782969,-0.23887673702636478
+houston,624190,Other Individual and Family Services,0.4388862999510181,-0.23375889599993283
+atlanta,624190,Other Individual and Family Services,0.5861272914564053,0.09339211425042006
+seattle,624190,Other Individual and Family Services,0.6209086029668281,-0.06473915185528197
+boston,624190,Other Individual and Family Services,0.45329816354315167,-0.07843926425282288
+fresno,624190,Other Individual and Family Services,,
+baltimore,624190,Other Individual and Family Services,-1.1874913384435054e-16,0.0
+tulsa,624190,Other Individual and Family Services,0.3282180859826116,-0.13393147567605312
+tyler,624190,Other Individual and Family Services,,
+champaign,624190,Other Individual and Family Services,,
+billings,624190,Other Individual and Family Services,0.0,0.0
+sebring,624190,Other Individual and Family Services,,
+cheyenne,624190,Other Individual and Family Services,0.0,0.0
+newyork,711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",0.3497723930843485,-0.38641685995499003
+losangeles,711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",0.40325960121992005,-0.5814465231675915
+chicago,711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",0.4428624813170709,-0.5041082686725225
+houston,711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",0.6128443171129339,-0.41446017093184184
+atlanta,711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",0.46738005320896125,-0.27573068550651475
+seattle,711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",0.45169049456939275,-0.4154431928047749
+boston,711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",0.3135661724420826,-0.3031440471317142
+fresno,711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",0.6290315317231698,-0.18154072841555452
+baltimore,711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",0.29006417838617576,-0.1952767760980456
+tulsa,711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",0.6745253294755853,-0.3889111722562861
+tyler,711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",,
+champaign,711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",0.3847031455132029,-0.2060244347748017
+billings,711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",,
+sebring,711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",,
+cheyenne,711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",,
+newyork,813110,Religious Organizations (Catholic),1.2628372444499578,-0.23182139311913116
+losangeles,813110,Religious Organizations (Catholic),0.8789076641607082,-0.43365508824435656
+chicago,813110,Religious Organizations (Catholic),0.7947880291413543,-0.5100403246563784
+houston,813110,Religious Organizations (Catholic),0.6739748056618984,-0.40005892852587904
+atlanta,813110,Religious Organizations (Catholic),0.0,0.0
+seattle,813110,Religious Organizations (Catholic),0.5653200936416928,-0.28617922082335906
+boston,813110,Religious Organizations (Catholic),0.8720041867585192,-0.3037256954330322
+fresno,813110,Religious Organizations (Catholic),0.8588674705146558,-0.16989929837771695
+baltimore,813110,Religious Organizations (Catholic),1.263615677161928,-0.3142213026083278
+tulsa,813110,Religious Organizations (Catholic),0.8585699917779872,-0.17874042246847713
+tyler,813110,Religious Organizations (Catholic),0.7062992549870148,-0.1353461997066177
+champaign,813110,Religious Organizations (Catholic),0.0,-3.2129252142504398e-16
+billings,813110,Religious Organizations (Catholic),0.0,0.0
+sebring,813110,Religious Organizations (Catholic),0.0,0.0
+cheyenne,813110,Religious Organizations (Catholic),0.0,0.0
+newyork,712110,Museums,0.18674575495707552,-0.25101375550341104
+losangeles,712110,Museums,0.4030481110115618,-0.5328634298275072
+chicago,712110,Museums,0.3862712984530462,-0.49036198514813806
+houston,712110,Museums,0.6543582450726796,-0.46333310731713595
+atlanta,712110,Museums,0.5654307631025315,-0.01871553980111406
+seattle,712110,Museums,0.6579593919108936,-0.47043507379712307
+boston,712110,Museums,0.05101169323988785,-0.005576743661444919
+fresno,712110,Museums,0.5470894379279683,-0.3499766648856325
+baltimore,712110,Museums,0.6093486917191899,-0.2191974585051494
+tulsa,712110,Museums,0.5035798150010405,-0.3225553778846836
+tyler,712110,Museums,0.8639731510362917,-0.28376313334755965
+champaign,712110,Museums,0.6402176465122463,-0.002527554355823619
+billings,712110,Museums,0.44224807239374475,-0.05763201072808481
+sebring,712110,Museums,0.1844994875793668,-0.048006442125273545
+cheyenne,712110,Museums,0.11563510952404146,-0.18955286686774855
+newyork,713940,Fitness and Recreational Sports Centers,0.10650899647978489,-0.03908621924275179
+losangeles,713940,Fitness and Recreational Sports Centers,0.13987779535836736,-0.27743432869365753
+chicago,713940,Fitness and Recreational Sports Centers,0.08267916444354478,-0.15718721660160154
+houston,713940,Fitness and Recreational Sports Centers,0.260508910986308,-0.303953864318035
+atlanta,713940,Fitness and Recreational Sports Centers,0.32254599903849906,0.008178557898943891
+seattle,713940,Fitness and Recreational Sports Centers,0.24679114098827543,-0.2525843438073827
+boston,713940,Fitness and Recreational Sports Centers,0.05166463900823456,-0.012697166941555555
+fresno,713940,Fitness and Recreational Sports Centers,0.20697928423050663,-0.11639589962830503
+baltimore,713940,Fitness and Recreational Sports Centers,0.2785878964252597,-0.11066235067154717
+tulsa,713940,Fitness and Recreational Sports Centers,0.18701606196300288,-0.17711539963556633
+tyler,713940,Fitness and Recreational Sports Centers,0.23994053803376877,-0.40632212086614516
+champaign,713940,Fitness and Recreational Sports Centers,0.3478668769022868,0.01366242713104472
+billings,713940,Fitness and Recreational Sports Centers,0.3356659956197303,-0.3734053634801951
+sebring,713940,Fitness and Recreational Sports Centers,0.6829507544189194,-0.05877338399797634
+cheyenne,713940,Fitness and Recreational Sports Centers,0.4678781133481674,-0.16786825950552156
+newyork,722410,Drinking Places (Alcoholic Beverages),0.09370772158881935,-0.03188882181580705
+losangeles,722410,Drinking Places (Alcoholic Beverages),0.30345847455244573,-0.4006359543455819
+chicago,722410,Drinking Places (Alcoholic Beverages),0.0821438636059524,-0.1230370416473882
+houston,722410,Drinking Places (Alcoholic Beverages),0.4833517247905841,-0.5441135277039054
+atlanta,722410,Drinking Places (Alcoholic Beverages),0.15959006015562527,-0.038263222442767184
+seattle,722410,Drinking Places (Alcoholic Beverages),0.3116038749281191,-0.3969669938256204
+boston,722410,Drinking Places (Alcoholic Beverages),0.12633619575093655,-0.13586384738983384
+fresno,722410,Drinking Places (Alcoholic Beverages),0.48742711595433896,-0.398983661237667
+baltimore,722410,Drinking Places (Alcoholic Beverages),0.22025563611064464,-0.13016681719580356
+tulsa,722410,Drinking Places (Alcoholic Beverages),0.22009478489105821,-0.35872498811117104
+tyler,722410,Drinking Places (Alcoholic Beverages),0.4313365119895937,-0.41774600627613157
+champaign,722410,Drinking Places (Alcoholic Beverages),0.6247477479182454,-0.010592422649558977
+billings,722410,Drinking Places (Alcoholic Beverages),0.3006944709659383,-0.29268932025876304
+sebring,722410,Drinking Places (Alcoholic Beverages),0.2012931002334413,-0.022609764194571925
+cheyenne,722410,Drinking Places (Alcoholic Beverages),0.5517960466732571,-0.2229394599864673

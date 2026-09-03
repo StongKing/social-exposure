@@ -1,32 +1,21 @@
 # -*- coding: utf-8 -*-
 """
-Fig. 2b — revised two-panel version
+Fig. 2b — public plotting/reproduction script
 
-Panel A:
-    System-level structural exposure–distance outcome for Static vs Dynamic,
-    with an inset comparing flow-weighted mean exposure changes.
+The private flow_matrix.csv is NOT required.
 
-Panel B:
-    Origin-level CBG structural exposure gain distribution,
-    with an inset comparing Static and Dynamic gains among the union
-    of the top 10% gain CBGs.
+Required baseline-derived files
+-------------------------------
+figure2b_active_pois.csv
+figure2b_baseline_system.csv
+figure2b_baseline_cbg_contribution.csv
 
-Important revision:
-    The Boston MSA analysis domain is restricted to the 44 POIs with
-    positive observed baseline flow.
-
-Definitions:
-    S_ij(H) = sum_k P_ik * (1 - Q_jk(H))
-            = 1 - P_i dot Q_j(H)
-
-    Structural exposure:
-        E(H) = sum_{ij: H_ij > 0} S_ij(H)
-
-    CBG-level structural exposure contribution:
-        C_i(H) = sum_j 1(H_ij > 0) S_ij(H)
-
-    CBG-level gain:
-        C_i(H*) - C_i(F)
+Other required public files
+---------------------------
+distance_matrix.csv
+H_opt_df_static_624190.pkl
+H_opt_df_dynamic_624190.pkl
+cbg_income_level_distribution_boston_msa.csv
 """
 
 import os
@@ -41,18 +30,44 @@ import matplotlib.pyplot as plt
 
 naics_code = "624190"
 
-cat_dir = r"matrices_A_D_S_Distribution/Other_Individual_and_Family_Services"
+cat_dir = (
+    r"matrices_A_D_S_Distribution/"
+    r"Other_Individual_and_Family_Services"
+)
 
-flow_path = os.path.join(cat_dir, "flow_matrix.csv")
-distance_path = os.path.join(cat_dir, "distance_matrix.csv")
+distance_path = os.path.join(
+    cat_dir,
+    "distance_matrix.csv"
+)
 
-static_h_path = os.path.join(cat_dir, f"H_opt_df_static_{naics_code}.pkl")
-dynamic_h_path = os.path.join(cat_dir, f"H_opt_df_dynamic_{naics_code}.pkl")
+static_h_path = os.path.join(
+    cat_dir,
+    f"H_opt_df_static_{naics_code}.pkl"
+)
+
+dynamic_h_path = os.path.join(
+    cat_dir,
+    f"H_opt_df_dynamic_{naics_code}.pkl"
+)
 
 income_path = (
     r"matrices_A_D_S_Distribution/"
     r"cbg_income_level_distribution_boston_msa.csv"
 )
+
+
+ACTIVE_POI_FILE = (
+    "figure2b_active_pois.csv"
+)
+
+BASELINE_SYSTEM_FILE = (
+    "figure2b_baseline_system.csv"
+)
+
+BASELINE_CBG_FILE = (
+    "figure2b_baseline_cbg_contribution.csv"
+)
+
 
 income_levels = [
     "low_income_pct",
@@ -61,7 +76,9 @@ income_levels = [
     "high_income_pct",
 ]
 
+
 EPS = 1e-4
+
 OUTPUT_PDF = "figure2b.pdf"
 
 
@@ -70,103 +87,197 @@ OUTPUT_PDF = "figure2b.pdf"
 # ============================================================
 
 def normalize_key(x):
+
     s = str(x).strip()
+
     if s.endswith(".0"):
         s = s[:-2]
+
     return s
 
 
 def load_csv_matrix(path):
-    if not os.path.isfile(path):
-        raise FileNotFoundError(f"File not found: {path}")
 
-    df = pd.read_csv(path, index_col=0)
-    df.index = [normalize_key(x) for x in df.index]
-    df.columns = [normalize_key(x) for x in df.columns]
-    df = df.apply(pd.to_numeric, errors="coerce").fillna(0.0)
+    if not os.path.isfile(path):
+        raise FileNotFoundError(
+            f"File not found: {path}"
+        )
+
+    df = pd.read_csv(
+        path,
+        index_col=0
+    )
+
+    df.index = [
+        normalize_key(x)
+        for x in df.index
+    ]
+
+    df.columns = [
+        normalize_key(x)
+        for x in df.columns
+    ]
+
+    df = (
+        df
+        .apply(pd.to_numeric, errors="coerce")
+        .fillna(0.0)
+    )
+
     return df
 
 
 def load_pkl_matrix(path):
+
     if not os.path.isfile(path):
-        raise FileNotFoundError(f"File not found: {path}")
+        raise FileNotFoundError(
+            f"File not found: {path}"
+        )
 
     obj = pd.read_pickle(path)
 
     if isinstance(obj, pd.DataFrame):
         df = obj.copy()
+
     elif isinstance(obj, np.ndarray):
         df = pd.DataFrame(obj)
-    else:
-        raise TypeError(f"Unsupported pkl object type: {type(obj)}")
 
-    df.index = [normalize_key(x) for x in df.index]
-    df.columns = [normalize_key(x) for x in df.columns]
-    df = df.apply(pd.to_numeric, errors="coerce").fillna(0.0)
+    else:
+        raise TypeError(
+            f"Unsupported pkl object type: {type(obj)}"
+        )
+
+    df.index = [
+        normalize_key(x)
+        for x in df.index
+    ]
+
+    df.columns = [
+        normalize_key(x)
+        for x in df.columns
+    ]
+
+    df = (
+        df
+        .apply(pd.to_numeric, errors="coerce")
+        .fillna(0.0)
+    )
+
     return df
 
 
-def align_matrices(*dfs):
-    common_rows = set(dfs[0].index)
-    common_cols = set(dfs[0].columns)
+def load_cbg_income_distribution(
+        income_path,
+        cbg_ids,
+        income_levels):
 
-    for df in dfs[1:]:
-        common_rows &= set(df.index)
-        common_cols &= set(df.columns)
-
-    common_rows = sorted(common_rows)
-    common_cols = sorted(common_cols)
-
-    if len(common_rows) == 0 or len(common_cols) == 0:
-        raise ValueError("No common rows or columns after alignment.")
-
-    aligned = [df.loc[common_rows, common_cols].copy() for df in dfs]
-    return aligned, common_rows, common_cols
-
-
-def load_cbg_income_distribution(income_path, cbg_ids, income_levels):
     if not os.path.isfile(income_path):
-        raise FileNotFoundError(f"Income file not found: {income_path}")
 
-    income_df = pd.read_csv(income_path)
-
-    if "GEOID" not in income_df.columns:
-        raise ValueError(
-            f"`GEOID` column not found. Columns: {list(income_df.columns)}"
+        raise FileNotFoundError(
+            f"Income file not found: {income_path}"
         )
 
-    income_df["GEOID"] = income_df["GEOID"].map(normalize_key)
-    income_df = income_df.set_index("GEOID")
+    income_df = pd.read_csv(
+        income_path
+    )
 
-    missing_cols = [c for c in income_levels if c not in income_df.columns]
+    if "GEOID" not in income_df.columns:
+
+        raise ValueError(
+            "`GEOID` column not found. "
+            f"Columns: {list(income_df.columns)}"
+        )
+
+    income_df["GEOID"] = (
+        income_df["GEOID"]
+        .map(normalize_key)
+    )
+
+    income_df = (
+        income_df
+        .set_index("GEOID")
+    )
+
+    missing_cols = [
+        c
+        for c in income_levels
+        if c not in income_df.columns
+    ]
+
     if missing_cols:
-        raise ValueError(f"Missing income columns: {missing_cols}")
 
-    P_df = income_df.reindex(cbg_ids)[income_levels].copy()
-    P_df = P_df.apply(pd.to_numeric, errors="coerce")
+        raise ValueError(
+            f"Missing income columns: {missing_cols}"
+        )
+
+    P_df = (
+        income_df
+        .reindex(cbg_ids)[income_levels]
+        .copy()
+    )
+
+    P_df = P_df.apply(
+        pd.to_numeric,
+        errors="coerce"
+    )
 
     if P_df.isna().any().any():
-        missing_ids = P_df[P_df.isna().any(axis=1)].index.tolist()[:10]
+
+        missing_ids = (
+            P_df[
+                P_df.isna().any(axis=1)
+            ]
+            .index
+            .tolist()[:10]
+        )
+
         raise ValueError(
-            f"Some CBGs have missing income distribution, e.g. {missing_ids}"
+            "Some CBGs have missing income "
+            f"distribution, e.g. {missing_ids}"
         )
 
     P = P_df.values.astype(float)
-    row_sum = P.sum(axis=1, keepdims=True)
+
+    row_sum = P.sum(
+        axis=1,
+        keepdims=True
+    )
 
     if np.nanmedian(row_sum) > 1.5:
+
         P = P / 100.0
-        row_sum = P.sum(axis=1, keepdims=True)
 
-    row_sum[row_sum == 0] = np.nan
+        row_sum = P.sum(
+            axis=1,
+            keepdims=True
+        )
+
+    row_sum[
+        row_sum == 0
+    ] = np.nan
+
     P = P / row_sum
-    P = np.nan_to_num(P, nan=0.0)
 
-    P_df = pd.DataFrame(P, index=cbg_ids, columns=income_levels)
+    P = np.nan_to_num(
+        P,
+        nan=0.0
+    )
+
+    P_df = pd.DataFrame(
+        P,
+        index=cbg_ids,
+        columns=income_levels
+    )
 
     print("[INCOME] loaded and normalized")
-    print(f"[INCOME] n_CBGs = {P_df.shape[0]}")
-    print(f"[INCOME] columns = {income_levels}")
+    print(
+        f"[INCOME] n_CBGs = "
+        f"{P_df.shape[0]}"
+    )
+    print(
+        f"[INCOME] columns = "
+        f"{income_levels}"
+    )
 
     return P_df
 
@@ -175,38 +286,69 @@ def load_cbg_income_distribution(income_path, cbg_ids, income_levels):
 # 2. Exposure calculation
 # ============================================================
 
-def calculate_poi_income_distribution(H_df, P_df):
-    """
-    Q_j(H) = sum_i H_ij P_i / sum_i H_ij
-    """
+def calculate_poi_income_distribution(
+        H_df,
+        P_df):
+
     H = H_df.values.astype(float)
     P = P_df.values.astype(float)
 
     poi_flow = H.sum(axis=0)
 
-    Q = np.full((H.shape[1], P.shape[1]), np.nan, dtype=float)
-    positive_poi = poi_flow > EPS
+    Q = np.full(
+        (
+            H.shape[1],
+            P.shape[1]
+        ),
+        np.nan,
+        dtype=float
+    )
 
-    Q[positive_poi, :] = (
+    positive_poi = (
+        poi_flow > EPS
+    )
+
+    Q[
+        positive_poi,
+        :
+    ] = (
         H[:, positive_poi].T @ P
-    ) / poi_flow[positive_poi, None]
+    ) / poi_flow[
+        positive_poi,
+        None
+    ]
 
-    return pd.DataFrame(Q, index=H_df.columns, columns=P_df.columns)
+    return pd.DataFrame(
+        Q,
+        index=H_df.columns,
+        columns=P_df.columns
+    )
 
 
-def calculate_social_exposure_matrix(H_df, P_df):
-    """
-    S_ij(H) = sum_k P_ik * (1 - Q_jk(H))
-            = 1 - P_i dot Q_j(H)
-    """
-    Q_df = calculate_poi_income_distribution(H_df, P_df)
+def calculate_social_exposure_matrix(
+        H_df,
+        P_df):
+
+    Q_df = (
+        calculate_poi_income_distribution(
+            H_df,
+            P_df
+        )
+    )
 
     P = P_df.values.astype(float)
     Q = Q_df.values.astype(float)
 
-    S = 1.0 - (P @ Q.T)
+    S = 1.0 - (
+        P @ Q.T
+    )
 
-    S_df = pd.DataFrame(S, index=H_df.index, columns=H_df.columns)
+    S_df = pd.DataFrame(
+        S,
+        index=H_df.index,
+        columns=H_df.columns
+    )
+
     return S_df, Q_df
 
 
@@ -214,18 +356,40 @@ def calculate_social_exposure_matrix(H_df, P_df):
 # 3. Evaluation metrics
 # ============================================================
 
-def calculate_total_structural_exposure(H_df, S_df):
+def calculate_total_structural_exposure(
+        H_df,
+        S_df):
+
     H = H_df.values.astype(float)
     S = S_df.values.astype(float)
+
     positive = H > EPS
-    return float(np.nansum(S[positive]))
+
+    return float(
+        np.nansum(
+            S[positive]
+        )
+    )
 
 
-def calculate_cbg_structural_contribution(H_df, S_df):
+def calculate_cbg_structural_contribution(
+        H_df,
+        S_df):
+
     H = H_df.values.astype(float)
     S = S_df.values.astype(float)
+
     positive = H > EPS
-    contrib = np.nansum(np.where(positive, S, 0.0), axis=1)
+
+    contrib = np.nansum(
+        np.where(
+            positive,
+            S,
+            0.0
+        ),
+        axis=1
+    )
+
     return pd.Series(
         contrib,
         index=H_df.index,
@@ -233,114 +397,202 @@ def calculate_cbg_structural_contribution(H_df, S_df):
     )
 
 
-def calculate_total_distance(H_df, D_df):
+def calculate_total_distance(
+        H_df,
+        D_df):
+
     return float(
         np.nansum(
             H_df.values.astype(float)
-            * D_df.values.astype(float)
+            *
+            D_df.values.astype(float)
         )
     )
 
 
-def calculate_avg_distance_per_visit(H_df, D_df):
-    total_flow = float(np.nansum(H_df.values.astype(float)))
-    total_distance = calculate_total_distance(H_df, D_df)
+def calculate_avg_distance_per_visit(
+        H_df,
+        D_df):
+
+    total_flow = float(
+        np.nansum(
+            H_df.values.astype(float)
+        )
+    )
+
+    total_distance = (
+        calculate_total_distance(
+            H_df,
+            D_df
+        )
+    )
 
     if total_flow <= EPS:
         return np.nan
 
-    return total_distance / total_flow
+    return (
+        total_distance
+        /
+        total_flow
+    )
 
 
-def calculate_flow_weighted_exposure(H_df, S_df):
+def calculate_flow_weighted_exposure(
+        H_df,
+        S_df):
+
     H = H_df.values.astype(float)
     S = S_df.values.astype(float)
 
     total_flow = np.nansum(H)
+
     if total_flow <= EPS:
         return np.nan
 
-    return float(np.nansum(H * S) / total_flow)
-
-
-# ============================================================
-# 4. Load and align data
-# ============================================================
-
-flow_matrix = load_csv_matrix(flow_path)
-distance_matrix = load_csv_matrix(distance_path)
-H_static = load_pkl_matrix(static_h_path)
-H_dynamic = load_pkl_matrix(dynamic_h_path)
-
-aligned, cbg_ids, poi_ids_all = align_matrices(
-    flow_matrix,
-    distance_matrix,
-    H_static,
-    H_dynamic,
-)
-
-flow_matrix, distance_matrix, H_static, H_dynamic = aligned
-
-print("\n========== ORIGINAL ALIGNED DOMAIN ==========")
-print(f"n_CBGs: {len(cbg_ids)}")
-print(f"n_POIs before filtering: {len(poi_ids_all)}")
-print(f"baseline total flow: {flow_matrix.values.sum():.6f}")
-print(f"static total flow:   {H_static.values.sum():.6f}")
-print(f"dynamic total flow:  {H_dynamic.values.sum():.6f}")
-
-
-# ============================================================
-# 5. Restrict Boston analysis to 44 baseline-positive POIs
-# ============================================================
-
-baseline_poi_flow = flow_matrix.sum(axis=0)
-
-active_poi_ids = baseline_poi_flow[baseline_poi_flow > EPS].index.tolist()
-zero_baseline_poi_ids = baseline_poi_flow[baseline_poi_flow <= EPS].index.tolist()
-
-static_before_filter = H_static.values.sum()
-dynamic_before_filter = H_dynamic.values.sum()
-
-flow_matrix = flow_matrix.loc[:, active_poi_ids].copy()
-distance_matrix = distance_matrix.loc[:, active_poi_ids].copy()
-H_static = H_static.loc[:, active_poi_ids].copy()
-H_dynamic = H_dynamic.loc[:, active_poi_ids].copy()
-
-poi_ids = active_poi_ids
-
-print("\n========== ANALYSIS POI DOMAIN ==========")
-print(f"Baseline-positive POIs retained: {len(poi_ids)}")
-print(f"Zero-baseline POIs removed:      {len(zero_baseline_poi_ids)}")
-
-if zero_baseline_poi_ids:
-    print("Removed POI IDs:")
-    print(zero_baseline_poi_ids)
-
-print("\nFlow totals after filtering:")
-print(f"Baseline: {flow_matrix.values.sum():.6f}")
-print(f"Static:   {H_static.values.sum():.6f}")
-print(f"Dynamic:  {H_dynamic.values.sum():.6f}")
-
-assert len(poi_ids) == 44, (
-    f"Expected 44 baseline-positive POIs, but found {len(poi_ids)}."
-)
-
-static_removed_flow = static_before_filter - H_static.values.sum()
-dynamic_removed_flow = dynamic_before_filter - H_dynamic.values.sum()
-
-print("\nRemoved-POI flow diagnostic:")
-print(f"Static flow on removed POIs:  {static_removed_flow:.6f}")
-print(f"Dynamic flow on removed POIs: {dynamic_removed_flow:.6f}")
-
-if abs(static_removed_flow) > EPS or abs(dynamic_removed_flow) > EPS:
-    print(
-        "WARNING: At least one removed zero-baseline POI carries "
-        "counterfactual flow. Check the optimization-domain definition."
+    return float(
+        np.nansum(H * S)
+        /
+        total_flow
     )
 
 
 # ============================================================
-# 6. Load CBG income distributions
+# 4. Load public model outputs
+# ============================================================
+
+distance_matrix = load_csv_matrix(
+    distance_path
+)
+
+H_static = load_pkl_matrix(
+    static_h_path
+)
+
+H_dynamic = load_pkl_matrix(
+    dynamic_h_path
+)
+
+
+# ============================================================
+# 5. Load baseline-derived data
+# ============================================================
+
+active_poi_df = pd.read_csv(
+    ACTIVE_POI_FILE,
+    dtype=str
+)
+
+active_poi_ids = [
+    normalize_key(x)
+    for x in active_poi_df["poi"]
+]
+
+
+baseline_system_df = pd.read_csv(
+    BASELINE_SYSTEM_FILE
+)
+
+
+baseline_cbg_df = pd.read_csv(
+    BASELINE_CBG_FILE,
+    dtype={"cbg": str}
+)
+
+baseline_cbg_df["cbg"] = (
+    baseline_cbg_df["cbg"]
+    .map(normalize_key)
+)
+
+
+# ============================================================
+# 6. Determine common public domain
+# ============================================================
+
+cbg_ids = (
+    baseline_cbg_df["cbg"]
+    .tolist()
+)
+
+poi_ids = active_poi_ids
+
+
+# Check required rows and columns.
+for name, df in [
+    ("distance_matrix", distance_matrix),
+    ("H_static", H_static),
+    ("H_dynamic", H_dynamic),
+]:
+
+    missing_cbgs = (
+        set(cbg_ids)
+        -
+        set(df.index)
+    )
+
+    missing_pois = (
+        set(poi_ids)
+        -
+        set(df.columns)
+    )
+
+    if missing_cbgs:
+
+        raise ValueError(
+            f"{name}: missing CBGs, e.g. "
+            f"{list(missing_cbgs)[:10]}"
+        )
+
+    if missing_pois:
+
+        raise ValueError(
+            f"{name}: missing POIs, e.g. "
+            f"{list(missing_pois)[:10]}"
+        )
+
+
+distance_matrix = (
+    distance_matrix.loc[
+        cbg_ids,
+        poi_ids
+    ].copy()
+)
+
+H_static = (
+    H_static.loc[
+        cbg_ids,
+        poi_ids
+    ].copy()
+)
+
+H_dynamic = (
+    H_dynamic.loc[
+        cbg_ids,
+        poi_ids
+    ].copy()
+)
+
+
+print(
+    "\n========== ANALYSIS DOMAIN =========="
+)
+
+print(
+    f"n_CBGs: {len(cbg_ids)}"
+)
+
+print(
+    f"Analysis POIs: {len(poi_ids)}"
+)
+
+
+assert len(poi_ids) == 44, (
+    "Expected 44 baseline-positive POIs, "
+    f"but found {len(poi_ids)}."
+)
+
+
+# ============================================================
+# 7. Load CBG income distributions
 # ============================================================
 
 P_df = load_cbg_income_distribution(
@@ -351,113 +603,331 @@ P_df = load_cbg_income_distribution(
 
 
 # ============================================================
-# 7. Recompute exposure matrices on the 44-POI domain
+# 8. Recompute Static and Dynamic exposure matrices
 # ============================================================
 
-S0, Q0 = calculate_social_exposure_matrix(flow_matrix, P_df)
-S_static, Q_static = calculate_social_exposure_matrix(H_static, P_df)
-S_dynamic, Q_dynamic = calculate_social_exposure_matrix(H_dynamic, P_df)
+S_static, Q_static = (
+    calculate_social_exposure_matrix(
+        H_static,
+        P_df
+    )
+)
 
-print("\n========== SOCIAL EXPOSURE MATRICES ==========")
-print(f"S0 shape:        {S0.shape}")
-print(f"S_static shape:  {S_static.shape}")
-print(f"S_dynamic shape: {S_dynamic.shape}")
+S_dynamic, Q_dynamic = (
+    calculate_social_exposure_matrix(
+        H_dynamic,
+        P_df
+    )
+)
+
+
+print(
+    "\n========== SOCIAL EXPOSURE MATRICES =========="
+)
+
+print(
+    f"S_static shape: "
+    f"{S_static.shape}"
+)
+
+print(
+    f"S_dynamic shape: "
+    f"{S_dynamic.shape}"
+)
 
 
 # ============================================================
-# 8. System-level outcomes
+# 9. System-level outcomes
 # ============================================================
 
-base_avg_dist = calculate_avg_distance_per_visit(flow_matrix, distance_matrix)
-static_avg_dist = calculate_avg_distance_per_visit(H_static, distance_matrix)
-dynamic_avg_dist = calculate_avg_distance_per_visit(H_dynamic, distance_matrix)
+# Baseline metrics generated from private flow_matrix.csv
+base_avg_dist = float(
+    baseline_system_df.loc[
+        baseline_system_df["scenario"]
+        ==
+        "Baseline",
+        "avg_distance_per_visit"
+    ].iloc[0]
+)
 
-base_structural = calculate_total_structural_exposure(flow_matrix, S0)
-static_structural = calculate_total_structural_exposure(H_static, S_static)
-dynamic_structural = calculate_total_structural_exposure(H_dynamic, S_dynamic)
+base_structural = float(
+    baseline_system_df.loc[
+        baseline_system_df["scenario"]
+        ==
+        "Baseline",
+        "structural_exposure"
+    ].iloc[0]
+)
 
-base_fw_exp = calculate_flow_weighted_exposure(flow_matrix, S0)
-static_fw_exp = calculate_flow_weighted_exposure(H_static, S_static)
-dynamic_fw_exp = calculate_flow_weighted_exposure(H_dynamic, S_dynamic)
+base_fw_exp = float(
+    baseline_system_df.loc[
+        baseline_system_df["scenario"]
+        ==
+        "Baseline",
+        "flow_weighted_exposure"
+    ].iloc[0]
+)
+
+base_n_positive_links = int(
+    baseline_system_df.loc[
+        baseline_system_df["scenario"]
+        ==
+        "Baseline",
+        "n_positive_links"
+    ].iloc[0]
+)
+
+
+# Static/Dynamic values recomputed from public data.
+static_avg_dist = (
+    calculate_avg_distance_per_visit(
+        H_static,
+        distance_matrix
+    )
+)
+
+dynamic_avg_dist = (
+    calculate_avg_distance_per_visit(
+        H_dynamic,
+        distance_matrix
+    )
+)
+
+
+static_structural = (
+    calculate_total_structural_exposure(
+        H_static,
+        S_static
+    )
+)
+
+dynamic_structural = (
+    calculate_total_structural_exposure(
+        H_dynamic,
+        S_dynamic
+    )
+)
+
+
+static_fw_exp = (
+    calculate_flow_weighted_exposure(
+        H_static,
+        S_static
+    )
+)
+
+dynamic_fw_exp = (
+    calculate_flow_weighted_exposure(
+        H_dynamic,
+        S_dynamic
+    )
+)
+
 
 system_df = pd.DataFrame(
     [
         {
             "scenario": "Baseline",
-            "avg_distance_per_visit": base_avg_dist,
-            "structural_exposure": base_structural,
-            "flow_weighted_exposure": base_fw_exp,
-            "n_positive_links": int((flow_matrix.values > EPS).sum()),
+            "avg_distance_per_visit":
+                base_avg_dist,
+            "structural_exposure":
+                base_structural,
+            "flow_weighted_exposure":
+                base_fw_exp,
+            "n_positive_links":
+                base_n_positive_links,
         },
+
         {
             "scenario": "Static",
-            "avg_distance_per_visit": static_avg_dist,
-            "structural_exposure": static_structural,
-            "flow_weighted_exposure": static_fw_exp,
-            "n_positive_links": int((H_static.values > EPS).sum()),
+            "avg_distance_per_visit":
+                static_avg_dist,
+            "structural_exposure":
+                static_structural,
+            "flow_weighted_exposure":
+                static_fw_exp,
+            "n_positive_links":
+                int(
+                    (
+                        H_static.values > EPS
+                    ).sum()
+                ),
         },
+
         {
             "scenario": "Dynamic",
-            "avg_distance_per_visit": dynamic_avg_dist,
-            "structural_exposure": dynamic_structural,
-            "flow_weighted_exposure": dynamic_fw_exp,
-            "n_positive_links": int((H_dynamic.values > EPS).sum()),
+            "avg_distance_per_visit":
+                dynamic_avg_dist,
+            "structural_exposure":
+                dynamic_structural,
+            "flow_weighted_exposure":
+                dynamic_fw_exp,
+            "n_positive_links":
+                int(
+                    (
+                        H_dynamic.values > EPS
+                    ).sum()
+                ),
         },
     ]
 )
 
+
 system_df["distance_change_pct"] = (
-    system_df["avg_distance_per_visit"] / base_avg_dist - 1.0
+    system_df[
+        "avg_distance_per_visit"
+    ]
+    /
+    base_avg_dist
+    -
+    1.0
 ) * 100.0
 
-system_df["structural_exposure_change_pct"] = (
-    system_df["structural_exposure"] / base_structural - 1.0
+
+system_df[
+    "structural_exposure_change_pct"
+] = (
+    system_df[
+        "structural_exposure"
+    ]
+    /
+    base_structural
+    -
+    1.0
 ) * 100.0
 
-system_df["flow_weighted_exposure_change_pct"] = (
-    system_df["flow_weighted_exposure"] / base_fw_exp - 1.0
+
+system_df[
+    "flow_weighted_exposure_change_pct"
+] = (
+    system_df[
+        "flow_weighted_exposure"
+    ]
+    /
+    base_fw_exp
+    -
+    1.0
 ) * 100.0
 
-print("\n========== SYSTEM-LEVEL OUTCOMES ==========")
-print(system_df.round(6).to_string(index=False))
+
+print(
+    "\n========== SYSTEM-LEVEL OUTCOMES =========="
+)
+
+print(
+    system_df
+    .round(6)
+    .to_string(index=False)
+)
 
 
 # ============================================================
-# 9. CBG-level structural exposure gains
+# 10. CBG-level structural exposure gains
 # ============================================================
 
-cbg_base_contrib = calculate_cbg_structural_contribution(flow_matrix, S0)
-cbg_static_contrib = calculate_cbg_structural_contribution(H_static, S_static)
-cbg_dynamic_contrib = calculate_cbg_structural_contribution(H_dynamic, S_dynamic)
+# Baseline contribution comes from private-flow preprocessing.
+cbg_base_contrib = (
+    baseline_cbg_df
+    .set_index("cbg")[
+        "baseline_structural_contrib"
+    ]
+    .reindex(cbg_ids)
+)
+
+
+if cbg_base_contrib.isna().any():
+
+    raise ValueError(
+        "Missing baseline structural "
+        "contribution for some CBGs."
+    )
+
+
+# Static and Dynamic contributions are recomputed.
+cbg_static_contrib = (
+    calculate_cbg_structural_contribution(
+        H_static,
+        S_static
+    )
+)
+
+cbg_dynamic_contrib = (
+    calculate_cbg_structural_contribution(
+        H_dynamic,
+        S_dynamic
+    )
+)
+
 
 cbg_gain_df = pd.DataFrame(
     {
         "cbg": cbg_ids,
-        "baseline_structural_contrib": cbg_base_contrib.values,
-        "static_structural_contrib": cbg_static_contrib.values,
-        "dynamic_structural_contrib": cbg_dynamic_contrib.values,
+
+        "baseline_structural_contrib":
+            cbg_base_contrib.values,
+
+        "static_structural_contrib":
+            cbg_static_contrib.values,
+
+        "dynamic_structural_contrib":
+            cbg_dynamic_contrib.values,
     }
 )
 
+
 cbg_gain_df["static_gain"] = (
-    cbg_gain_df["static_structural_contrib"]
-    - cbg_gain_df["baseline_structural_contrib"]
+    cbg_gain_df[
+        "static_structural_contrib"
+    ]
+    -
+    cbg_gain_df[
+        "baseline_structural_contrib"
+    ]
 )
+
 
 cbg_gain_df["dynamic_gain"] = (
-    cbg_gain_df["dynamic_structural_contrib"]
-    - cbg_gain_df["baseline_structural_contrib"]
+    cbg_gain_df[
+        "dynamic_structural_contrib"
+    ]
+    -
+    cbg_gain_df[
+        "baseline_structural_contrib"
+    ]
 )
 
-cbg_gain_df["dynamic_minus_static"] = (
-    cbg_gain_df["dynamic_gain"] - cbg_gain_df["static_gain"]
+
+cbg_gain_df[
+    "dynamic_minus_static"
+] = (
+    cbg_gain_df[
+        "dynamic_gain"
+    ]
+    -
+    cbg_gain_df[
+        "static_gain"
+    ]
 )
 
-print("\n========== CBG-LEVEL STRUCTURAL EXPOSURE GAINS ==========")
-for method in ["static", "dynamic"]:
+
+print(
+    "\n========== CBG-LEVEL STRUCTURAL EXPOSURE GAINS =========="
+)
+
+
+for method in [
+    "static",
+    "dynamic"
+]:
+
     x = (
-        cbg_gain_df[f"{method}_gain"]
-        .replace([np.inf, -np.inf], np.nan)
+        cbg_gain_df[
+            f"{method}_gain"
+        ]
+        .replace(
+            [np.inf, -np.inf],
+            np.nan
+        )
         .dropna()
     )
 
@@ -468,18 +938,39 @@ for method in ["static", "dynamic"]:
         f"median={x.median():.6f}, "
         f"p25={x.quantile(0.25):.6f}, "
         f"p75={x.quantile(0.75):.6f}, "
-        f"share_positive={(x > 0).mean() * 100:.2f}%"
+        f"share_positive="
+        f"{(x > 0).mean() * 100:.2f}%"
     )
 
-print("\n[CHECK] Sum of CBG gains should equal total structural change:")
-print(f"Static  CBG gain sum: {cbg_gain_df['static_gain'].sum():.6f}")
-print(f"Static  structural change: {static_structural - base_structural:.6f}")
-print(f"Dynamic CBG gain sum: {cbg_gain_df['dynamic_gain'].sum():.6f}")
-print(f"Dynamic structural change: {dynamic_structural - base_structural:.6f}")
+
+print(
+    "\n[CHECK] Sum of CBG gains should "
+    "equal total structural change:"
+)
+
+print(
+    "Static  CBG gain sum: "
+    f"{cbg_gain_df['static_gain'].sum():.6f}"
+)
+
+print(
+    "Static  structural change: "
+    f"{static_structural - base_structural:.6f}"
+)
+
+print(
+    "Dynamic CBG gain sum: "
+    f"{cbg_gain_df['dynamic_gain'].sum():.6f}"
+)
+
+print(
+    "Dynamic structural change: "
+    f"{dynamic_structural - base_structural:.6f}"
+)
 
 
 # ============================================================
-# 10. Plot Fig. 2b
+# 11. Plot Fig. 2b
 # ============================================================
 
 plt.rcParams["font.family"] = "Arial"
@@ -922,11 +1413,14 @@ plt.show()
 
 
 # ============================================================
-# 11. Final summary
+# 12. Final summary
 # ============================================================
 
 print("\n========== FINAL FIG. 2b SUMMARY ==========")
-print(f"Analysis POIs: {len(poi_ids)}")
+
+print(
+    f"Analysis POIs: {len(poi_ids)}"
+)
 
 print(
     "Static: "
@@ -946,4 +1440,6 @@ print(
     f"{dynamic_row['flow_weighted_exposure_change_pct']:+.4f}%"
 )
 
-print(f"\nSaved figure: {OUTPUT_PDF}")
+print(
+    f"\nSaved figure: {OUTPUT_PDF}"
+)
