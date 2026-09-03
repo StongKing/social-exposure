@@ -1,0 +1,2 @@
+city,category,n_cbgs,n_pois,baseline_total_flow,baseline_spse,baseline_flow_weighted_exposure,baseline_total_distance
+boston,Other Individual and Family Services,729,53,4062.0,530.9650274214996,0.6360197090317541,27384.944876356927

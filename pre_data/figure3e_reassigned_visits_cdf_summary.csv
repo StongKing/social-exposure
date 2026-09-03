@@ -1,0 +1,4 @@
+k,budget_label,n_origins,n_changed,n_unchanged,unchanged_share,total_reassigned_visits,median_reassigned_visits,p90_reassigned_visits,p99_reassigned_visits,max_reassigned_visits
+0.01,1% budget,729,311,418,0.5733882030178327,1120.0,0.0,3.0,8.0,16.0
+0.05,5% budget,729,377,352,0.4828532235939643,1322.0,1.0,4.0,9.0,17.0
+0.2,20% budget,729,463,266,0.36488340192043894,1606.0,3.0,4.0,14.0,20.0
