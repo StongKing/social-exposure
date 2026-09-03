@@ -1,0 +1,7 @@
+﻿naics,category,n_cbgs,missing_income_count,spearman_rho,spearman_p,note
+624190,Other Individual and Family Services,729,0,-0.9195655840142476,3.799631711959566e-297,
+711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",1736,0,-0.9453589016898054,0.0,
+712110,Museums,1626,0,-0.9456682601749381,0.0,
+713940,Fitness and Recreational Sports Centers,2754,0,-0.9668185973683756,0.0,
+722410,Drinking Places (Alcoholic Beverages),2583,0,-0.9594050082559324,0.0,
+813110,Religious Organizations (Catholic),195,0,-0.6992307679867514,6.0333306733648574e-30,
