@@ -279,3 +279,21 @@ with category-specific subdirectories containing the required flow, distance, an
 ### Notes on reproducibility
 
 The scripts in this repository correspond to the computational analyses used for the accompanying manuscript. Numerical differences may arise across operating systems, Python/package versions, or optimization-solver versions. When reproducing the reported results, we recommend keeping the model parameters and data-processing settings provided in the released scripts unchanged.
+
+## Data sources and availability
+
+The mobility-derived POI visitation records used in this study were obtained from **SafeGraph Places**. These data are subject to third-party licensing and redistribution restrictions and therefore cannot be publicly released with this repository. Researchers interested in obtaining the underlying mobility data should access them directly through SafeGraph and comply with the applicable data-use terms.
+
+Household and income information was derived from the **U.S. Census Bureau American Community Survey (ACS) 2021 5-Year Estimates**, which are publicly available from the U.S. Census Bureau.
+
+Geographic boundary data were obtained from the **U.S. Census Bureau TIGER/Line Shapefiles**. Census place boundaries were used to define the city-core study areas, while CBSA boundaries were used for the full Boston Metropolitan Statistical Area (MSA) diagnostic analyses.
+
+POI categories were defined according to the **North American Industry Classification System (NAICS)**.
+
+The corresponding data sources are:
+
+- **SafeGraph Places:** https://www.safegraph.com/products/places/
+- **American Community Survey (ACS) 2021 5-Year Estimates:** https://www.census.gov/programs-surveys/acs
+- **TIGER/Line Census PLACE shapefiles (2021):** https://www2.census.gov/geo/tiger/TIGER2021/PLACE/
+- **TIGER/Line CBSA shapefiles (2021):** https://www2.census.gov/geo/tiger/TIGER2021/CBSA/
+- **North American Industry Classification System (NAICS):** https://www.census.gov/naics/
